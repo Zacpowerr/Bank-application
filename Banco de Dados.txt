@@ -1,0 +1,26 @@
+create database Prova;
+use Prova;
+create table Usuario(
+    id int not null primary key auto_increment,
+   nome varchar(128),
+ ativo int not null,
+    cnpj varchar(14));
+
+create table Transferencia(
+     id int not null primary key auto_increment,
+     usuario_id int,
+     pagador_nome varchar(128),
+     pagador_banco varchar(3),
+     pagador_agencia varchar(4),
+     pagador_conta varchar(6),
+     beneficiario_nome varchar(128),
+     beneficiario_banco varchar(3),
+     beneficiario_agencia varchar(4),
+     beneficiario_conta varchar(6),
+     valor numeric(15,2),
+     tipo enum('CC','TED','DOC') ,
+     status enum('OK','ERRO'), 
+     foreign key (usuario_id) references Usuario(id),
+	ativo int not null
+);
+
